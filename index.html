@@ -181,6 +181,14 @@
     </div>
 
     <script src="config.js"></script>
+    <script>
+        // Для GitHub Pages используем config.github.js
+        if (window.location.hostname.includes("github.io")) {
+            var script = document.createElement("script");
+            script.src = "config.github.js";
+            document.head.appendChild(script);
+        }
+    </script>
     <script src="youtube-api.js"></script>
     <script src="app.js"></script>
 </body>
