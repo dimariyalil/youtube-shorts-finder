@@ -1,0 +1,31 @@
+{
+  "name": "youtube-shorts-finder",
+  "version": "1.0.0",
+  "description": "Инструмент для поиска и анализа вирусных YouTube Shorts",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "serve": "http-server -p 8000"
+  },
+  "keywords": [
+    "youtube",
+    "shorts",
+    "api",
+    "viral",
+    "content",
+    "analysis"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/youtube-shorts-finder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/youtube-shorts-finder/issues"
+  },
+  "homepage": "https://github.com/yourusername/youtube-shorts-finder#readme"
+}
