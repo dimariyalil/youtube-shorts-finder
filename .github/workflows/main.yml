@@ -1,0 +1,46 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Create config.js with API key
+      run: |
+        cat > config.js << 'CONFIG'
+        const CONFIG = {
+            API_KEY: '${{ secrets.YOUTUBE_API_KEY }}',
+            API_BASE_URL: 'https://www.googleapis.com/youtube/v3',
+            MALE_KEYWORDS: [
+                'ufc', 'бокс', 'футбол', 'хоккей', 'экстрим',
+                'cs', 'dota', 'pubg', 'warzone', 'fifa',
+                'авто', 'мото', 'тюнинг', 'дрифт',
+                'фейлы', 'приколы', 'пранки',
+                'топ', 'эпик', 'жесть', 'нокаут'
+            ],
+            EXCLUDE_KEYWORDS: [
+                'макияж', 'мода', 'готовка', 'рецепт',
+                'отношения', 'свадьба', 'декор',
+                'для детей', 'мультики', 'сказки'
+            ],
+            MIN_METRICS: {
+                views: 100000,
+                engagement: 0.05,
+                viral_score: 50
+            },
+            STORAGE_KEY: 'youtube_shorts_finder_data'
+        };
+        CONFIG
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
